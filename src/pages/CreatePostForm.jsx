@@ -116,29 +116,29 @@ function CreatePostForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-2">
+    <div className=" bg-gray-50 p-2">
       <div className="w-full max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
-        <div className='flex justify-end mb-4'>
+        <div className='flex justify-end mb-1'>
           <button
             onClick={() => setShowPreview(!showPreview)}
-            className='flex items-center p-2 gap-2 bg-green-300 hover:bg-green-100'
+            className='flex items-center rounded-md px-6 py-2 text-white gap-2 bg-green-800 hover:bg-green-700 transition-all duration-1000 ease-in-out'
             
           >
             {showPreview ? (
               <>
-                Masquer lapercu
+                Hide Preview
                 <EyeOff size={16} />
               </>
             ) : (
               <>
-                Voir l`&apos`apercu
+                Preview
                 <Eye size={16} />
               </>
             )}
           </button>
         </div>
-        <div className={`grid ${showPreview ? 'grid-cols-2 gap-4' : 'grid-cols-1'}`}>
-            <div className='space-y-6'>
+        <div className='grid grid-cols-1'>
+            <div className={` ${showPreview ? 'hidden' : 'block'}`}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -187,28 +187,30 @@ function CreatePostForm() {
                     onChange={(e) => setContent(e.target.value)}
                     onClick={() => setshowMore(false)}
                     placeholder="Contenu de l'article (format Markdown)"
-                    className="w-full h-[calc(100vh-300px)] p-4 border border-gray-300 rounded-b-md font-mono focus:outline-none"
+                    className="w-full h-[calc(100vh-400px)] p-4 border border-gray-300 rounded-b-md font-mono focus:outline-none resize-none"
                   />
                 </div>
 
-                <div className="flex justify-end">
-                  <Button 
+                <div className="flex justify-start">
+                  <button 
                     type="submit"
-                    className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
+                    className="bg-green-800 hover:bg-green-700 text-white px-6 py-2 rounded-md "
                   >
                     Publier
-                  </Button>
+                  </button>
                 </div>
               </form> 
             </div>
-          {showPreview && (
-            <div className=" p-4 border rounded-lg bg-white">
-              <h3 className="text-lg font-semibold mb-4">Aperçu :</h3>
-              <div className="prose max-w-none overflow-auto h-[calc(100vh-300px)]"
-                  dangerouslySetInnerHTML={createMarkdownPreview()}
-              />    
+            <div className={` ${showPreview ? 'block' : 'hidden'} mt-2`}>
+              {showPreview && (
+                <div className=" p-4 border rounded-lg bg-white">
+                  <h3 className="text-lg font-semibold mb-4">Aperçu :</h3>
+                  <div className="prose max-w-none overflow-auto h-[calc(100vh-300px)]"
+                      dangerouslySetInnerHTML={createMarkdownPreview()}
+                  />    
+                </div>
+              )}
             </div>
-          )}
         </div> 
       </div>
     </div>
