@@ -7,9 +7,9 @@ function App() {
     <>
      <div className="App">
       <header className="bg-blue-800 text-white p-4">
-        {/* <h1 className="text-3xl font-bold">Mon Éditeur Markdown</h1> */}
+        <h1 className="text-3xl font-bold">My Markdown Editor</h1>
       </header>
-      <main className="container mx-auto mt-4 p-4">
+      <main className="container mx-auto mt-4">
         <MarkdownEditor />
       </main>
     </div>
